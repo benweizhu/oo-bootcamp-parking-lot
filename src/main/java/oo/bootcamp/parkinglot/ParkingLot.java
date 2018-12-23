@@ -1,18 +1,28 @@
 package oo.bootcamp.parkinglot;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class ParkingLot {
 
     private int amount;
+    private Map<Ticket, Car> parkedCars = new HashMap<>();
 
     ParkingLot(int amount) {
         this.amount = amount;
     }
 
-    Ticket park(Car car) {
+    Ticket parking(Car car) {
         if (this.amount <= 0) {
             throw new NoSlotException();
         }
+        Ticket ticket = new Ticket();
+        parkedCars.put(ticket, car);
         this.amount--;
-        return new Ticket();
+        return ticket;
+    }
+
+    public Car pick(Ticket ticket) {
+        return parkedCars.remove(ticket);
     }
 }
