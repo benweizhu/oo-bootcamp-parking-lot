@@ -41,4 +41,13 @@ class ParkingLotTest {
 
         assertThrows(PickCarFailedException.class, () -> parkingLot.pick(null));
     }
+
+    @Test
+    void should_throw_pick_car_failed_exception_when_pick_a_car_given_ticket_not_match_car() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car parkedCard = new Car();
+        parkingLot.parking(parkedCard);
+
+        assertThrows(PickCarFailedException.class, () -> parkingLot.pick(new Ticket()));
+    }
 }
