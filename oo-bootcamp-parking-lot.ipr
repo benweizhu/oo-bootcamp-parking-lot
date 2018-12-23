@@ -20,7 +20,7 @@
     <option name="SKIP_IMPORT_STATEMENTS" value="false" />
   </component>
   <component name="GoogleJavaFormatSettings">
-    <option name="enabled" value="false" />
+    <option name="enabled" value="true" />
   </component>
   <component name="GradleUISettings">
     <setting name="root" />
