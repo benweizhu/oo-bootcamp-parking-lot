@@ -23,6 +23,9 @@ class ParkingLot {
     }
 
     public Car pick(Ticket ticket) {
+        if (!parkedCars.containsKey(ticket)) {
+            throw new PickCarFailedException();
+        }
         return parkedCars.remove(ticket);
     }
 }

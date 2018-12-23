@@ -2,9 +2,7 @@ package oo.bootcamp.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParkingLotTest {
 
@@ -33,6 +31,14 @@ class ParkingLotTest {
         Car pickedCar = parkingLot.pick(ticket);
 
         assertEquals(pickedCar, parkedCard);
+    }
 
+    @Test
+    void should_throw_pick_car_failed_exception_when_pick_a_car_given_no_ticket() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car parkedCard = new Car();
+        parkingLot.parking(parkedCard);
+
+        assertThrows(PickCarFailedException.class, () -> parkingLot.pick(null));
     }
 }
