@@ -29,4 +29,10 @@ Feature: xxx
     Given: 有车停在停车场，车和票不一致
     When: 出票取车
     Then: 无法离开停车场  
+  
+  Scenario: xxx
+    Given: 停车场没有剩余车位
+    When: 出票取车
+    When: 拿票停车
+    Then: 取车成功，停车成功
 ```
