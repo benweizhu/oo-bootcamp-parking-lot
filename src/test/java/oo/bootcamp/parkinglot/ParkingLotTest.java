@@ -25,19 +25,19 @@ class ParkingLotTest {
     @Test
     void should_pick_car_successfully_when_pick_a_car_given_park_exist_and_ticket_match() {
         ParkingLot parkingLot = new ParkingLot(1);
-        Car parkedCard = new Car();
-        Ticket ticket = parkingLot.parking(parkedCard);
+        Car car = new Car();
+        Ticket ticket = parkingLot.parking(car);
 
         Car pickedCar = parkingLot.pick(ticket);
 
-        assertEquals(pickedCar, parkedCard);
+        assertEquals(pickedCar, car);
     }
 
     @Test
     void should_throw_pick_car_failed_exception_when_pick_a_car_given_no_ticket() {
         ParkingLot parkingLot = new ParkingLot(1);
-        Car parkedCard = new Car();
-        parkingLot.parking(parkedCard);
+        Car car = new Car();
+        parkingLot.parking(car);
 
         assertThrows(PickCarFailedException.class, () -> parkingLot.pick(null));
     }
@@ -45,9 +45,20 @@ class ParkingLotTest {
     @Test
     void should_throw_pick_car_failed_exception_when_pick_a_car_given_ticket_not_match_car() {
         ParkingLot parkingLot = new ParkingLot(1);
-        Car parkedCard = new Car();
-        parkingLot.parking(parkedCard);
+        Car car = new Car();
+        parkingLot.parking(car);
 
         assertThrows(PickCarFailedException.class, () -> parkingLot.pick(new Ticket()));
+    }
+
+    @Test
+    void should_park_car_successfully_when_park_a_car_given_is_full_and_a_car_leave() {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Car car = new Car();
+        Ticket ticket = parkingLot.parking(car);
+        parkingLot.pick(ticket);
+        Car myCar = new Car();
+
+        assertNotNull(parkingLot.parking(myCar));
     }
 }

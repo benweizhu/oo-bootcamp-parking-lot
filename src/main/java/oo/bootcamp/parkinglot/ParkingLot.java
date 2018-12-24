@@ -5,20 +5,19 @@ import java.util.Map;
 
 class ParkingLot {
 
-    private int amount;
+    private int numberOfSlot;
     private Map<Ticket, Car> parkedCars = new HashMap<>();
 
-    ParkingLot(int amount) {
-        this.amount = amount;
+    ParkingLot(int numberOfSlot) {
+        this.numberOfSlot = numberOfSlot;
     }
 
     Ticket parking(Car car) {
-        if (this.amount <= 0) {
+        if (this.numberOfSlot <= parkedCars.size()) {
             throw new NoSlotException();
         }
         Ticket ticket = new Ticket();
         parkedCars.put(ticket, car);
-        this.amount--;
         return ticket;
     }
 

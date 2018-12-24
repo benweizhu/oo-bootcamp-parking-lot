@@ -1,3 +1,5 @@
-oo-bootcamp-parking-lot.iml
-oo-bootcamp-parking-lot.ipr
-oo-bootcamp-parking-lot.iws
+*.iml
+*.ipr
+*.iws
+.gradle
+.idea
