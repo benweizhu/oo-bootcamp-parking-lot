@@ -36,3 +36,35 @@ Feature: xxx
     When: 拿票停车
     Then: 取车成功，停车成功
 ```
+```gherkin
+Feature: 停车小弟
+  Scenario: xxx
+    Given: 停车场A有剩余车位
+    When: 小弟停车
+    Then: 车停在停车场A
+    
+  Scenario: xxx
+    Given: 车停在停车场A
+    When: 小弟取车
+    Then: 取车成功
+    
+  Scenario: xxx
+    Given: 停车场A已满，停车场B有剩余车位
+    When: 小弟停车
+    Then: 车停在停车场B
+    
+  Scenario: xxx
+    Given: 当车停在停车场B
+    When: 小弟取车
+    Then: 取车成功    
+    
+  Scenario: xxx
+    Given: 车停在停车场A
+    When: 司机自己停车
+    Then: 取车成功  
+        
+  Scenario: xxx
+    Given: 车停在停车场B
+    When: 司机自己停车
+    Then: 取车成功  
+```
