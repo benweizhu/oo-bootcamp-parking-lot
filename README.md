@@ -71,5 +71,5 @@ Feature: 停车小弟
   Scenario: xxx
     Given: 停车场A和停车场B都已满
     When: 小弟停车
-    Then: 提车失败  
+    Then: 停车失败
 ```
