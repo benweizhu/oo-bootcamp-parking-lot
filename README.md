@@ -67,4 +67,9 @@ Feature: 停车小弟
     Given: 车停在停车场B
     When: 司机自己停车
     Then: 取车成功  
+    
+  Scenario: xxx
+    Given: 停车场A和停车场B都已满
+    When: 小弟停车
+    Then: 提车失败  
 ```
