@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
 
@@ -97,4 +96,20 @@ public class ParkingBoyTest {
 
     assertSame(car, parkingLotB.pick(ticket));
   }
-}
+
+  @Test
+  void should_throw_no_slot_exception_when_parking_boy_park_car_given_parking_lot_a_and_b_both_full(){
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLotA = new ParkingLot(1);
+    ParkingLot parkingLotB = new ParkingLot(1);
+
+    parkingLots.add(parkingLotA);
+    parkingLots.add(parkingLotB);
+
+    parkingLotA.parking(new Car());
+    parkingLotB.parking(new Car());
+
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+    Car car = new Car();
+    assertThrows(NoSlotException.class, ()-> parkingBoy.park(car));
+  }}
