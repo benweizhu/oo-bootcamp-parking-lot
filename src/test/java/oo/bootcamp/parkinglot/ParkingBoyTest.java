@@ -79,4 +79,22 @@ public class ParkingBoyTest {
 
     assertSame(car, pickedCar);
   }
+
+  @Test
+  void should_return_same_car_when_customer_pick_car_given_car_parked_in_parking_lot_b() throws Throwable {
+    List<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLotA = new ParkingLot(1);
+    ParkingLot parkingLotB = new ParkingLot(1);
+
+    parkingLots.add(parkingLotA);
+    parkingLots.add(parkingLotB);
+
+    parkingLotA.parking(new Car());
+
+    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+    Car car = new Car();
+    Ticket ticket = parkingBoy.park(car);
+
+    assertSame(car, parkingLotB.pick(ticket));
+  }
 }
