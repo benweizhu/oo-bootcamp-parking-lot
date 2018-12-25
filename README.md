@@ -56,7 +56,7 @@ Feature: 停车小弟
   Scenario: xxx
     Given: 停车场A已满，停车场B有剩余车位
     When: 小弟停车
-    Then: 车停在停车场B
+    Then: 小弟取票成功
     
   Scenario: xxx
     Given: 当车停在停车场B
