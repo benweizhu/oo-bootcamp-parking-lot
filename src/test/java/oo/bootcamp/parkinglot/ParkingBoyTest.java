@@ -102,8 +102,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void
-      should_throw_no_slot_exception_when_parking_boy_park_car_given_parking_lot_a_and_b_both_full() {
+  void should_throw_no_slot_exception_when_parking_boy_park_car_given_parking_lot_a_and_b_both_full() {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     ParkingLot parkingLotB = new ParkingLot(1);
