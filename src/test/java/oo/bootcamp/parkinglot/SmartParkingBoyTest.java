@@ -57,4 +57,24 @@ public class SmartParkingBoyTest {
     assertNotNull(ticket);
     assertSame(car, pickedCar);
   }
+
+  @Test
+  void should_park_car_in_parking_lot_a_when_smart_parking_boy_park_car_given_parking_lot_b_and_s_has_equal_available()
+          throws Throwable {
+    ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLotA = new ParkingLot(1);
+    ParkingLot parkingLotB = new ParkingLot(1);
+
+    parkingLots.add(parkingLotA);
+    parkingLots.add(parkingLotB);
+
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+    Car car = new Car();
+
+    Ticket ticket = smartParkingBoy.park(car);
+    Car pickedCar = parkingLotA.pick(ticket);
+
+    assertNotNull(ticket);
+    assertSame(car, pickedCar);
+  }
 }
