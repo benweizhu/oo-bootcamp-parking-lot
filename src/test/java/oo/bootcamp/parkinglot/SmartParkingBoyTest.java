@@ -77,4 +77,20 @@ public class SmartParkingBoyTest {
     assertNotNull(ticket);
     assertSame(car, pickedCar);
   }
+
+  @Test
+  void should_throw_parking_lot_is_full_exception_when_smart_parking_boy_park_car_given_parking_lot_a_and_b_are_full() {
+    ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLotA = new ParkingLot(1);
+    ParkingLot parkingLotB = new ParkingLot(1);
+
+    parkingLotA.park(new Car());
+    parkingLotB.park(new Car());
+
+    parkingLots.add(parkingLotA);
+    parkingLots.add(parkingLotB);
+
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+    assertThrows(ParkingLotIsFullException.class, ()-> smartParkingBoy.park(new Car()));
+  }
 }
