@@ -36,6 +36,7 @@ Feature: xxx
     When: 拿票停车
     Then: 取车成功，停车成功
 ```
+
 ```gherkin
 Feature: 停车小弟
   Scenario: xxx
@@ -72,4 +73,40 @@ Feature: 停车小弟
     Given: 停车场A和停车场B都已满
     When: 小弟停车
     Then: 停车失败
+```
+
+```gherkin
+Feature: SmartBoy停车
+  Scenario: 
+    Given 停车场A有剩余空位
+    When SmartBoy停车
+    Then SmartBoy停车成功
+    
+    Given 停车场A没有剩余空位
+    When SmartBoy停车
+    Then SmartBoy停车失败    
+       
+    Given 停车场A有2个剩余车位，停车场B有3个剩余车位
+    When SmartBoy停车
+    Then SmartBoy停车到停车场B   
+     
+    Given 停车场A有2个剩余车位，停车场B有2个剩余车位
+    When SmartBoy停车
+    Then SmartBoy停车到停车场A    
+    
+    Given 停车场A和B都没有停车位
+    When SmartBoy停车
+    Then SmartBoy停车失败
+    
+    Given 车停在停车场A，SmartBoy有停车票
+    When SmartBoy取车
+    Then SmartBoy取车成功
+      
+    Given 车停在停车场A，SmartBoy有一张非法停车票
+    When SmartBoy取车
+    Then SmartBoy取车失败
+
+    Given 车停在停车场A，SmartBoy没有停车票
+    When SmartBoy取车
+    Then SmartBoy取车失败
 ```
