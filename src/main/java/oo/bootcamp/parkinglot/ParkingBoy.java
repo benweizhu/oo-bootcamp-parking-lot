@@ -18,13 +18,13 @@ public class ParkingBoy {
         .map(parkingLot -> getTicket(car, parkingLot))
         .filter(Objects::nonNull)
         .findAny()
-        .orElseThrow((Supplier<Throwable>) NoSlotException::new);
+        .orElseThrow((Supplier<Throwable>) ParkingLotIsFullException::new);
   }
 
   private Ticket getTicket(Car car, ParkingLot parkingLot) {
     try {
       return parkingLot.parking(car);
-    } catch (NoSlotException e) {
+    } catch (ParkingLotIsFullException e) {
       return null;
     }
   }
@@ -35,13 +35,13 @@ public class ParkingBoy {
         .map(parkingLot -> getCar(ticket, parkingLot))
         .filter(Objects::nonNull)
         .findAny()
-        .orElseThrow((Supplier<Throwable>) PickCarFailedException::new);
+        .orElseThrow((Supplier<Throwable>) InvalidTicketException::new);
   }
 
   private Car getCar(Ticket ticket, ParkingLot parkingLot) {
     try {
       return parkingLot.pick(ticket);
-    } catch (PickCarFailedException e) {
+    } catch (InvalidTicketException e) {
       return null;
     }
   }

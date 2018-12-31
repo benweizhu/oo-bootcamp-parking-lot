@@ -111,5 +111,5 @@ public class ParkingBoyTest {
 
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car = new Car();
-    assertThrows(NoSlotException.class, ()-> parkingBoy.park(car));
+    assertThrows(ParkingLotIsFullException.class, ()-> parkingBoy.park(car));
   }}

@@ -19,7 +19,7 @@ class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.parking(new Car());
 
-        assertThrows(NoSlotException.class, () -> parkingLot.parking(new Car()));
+        assertThrows(ParkingLotIsFullException.class, () -> parkingLot.parking(new Car()));
     }
 
     @Test
@@ -39,7 +39,7 @@ class ParkingLotTest {
         Car car = new Car();
         parkingLot.parking(car);
 
-        assertThrows(PickCarFailedException.class, () -> parkingLot.pick(null));
+        assertThrows(InvalidTicketException.class, () -> parkingLot.pick(null));
     }
 
     @Test
@@ -48,7 +48,7 @@ class ParkingLotTest {
         Car car = new Car();
         parkingLot.parking(car);
 
-        assertThrows(PickCarFailedException.class, () -> parkingLot.pick(new Ticket()));
+        assertThrows(InvalidTicketException.class, () -> parkingLot.pick(new Ticket()));
     }
 
     @Test
