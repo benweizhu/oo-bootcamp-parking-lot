@@ -1,5 +1,3 @@
 package oo.bootcamp.parkinglot;
 
-public class ParkingLotIsFullException extends RuntimeException {
-
-}
+public class ParkingLotIsFullException extends RuntimeException {}

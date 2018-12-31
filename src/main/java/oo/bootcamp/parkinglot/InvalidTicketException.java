@@ -1,4 +1,3 @@
 package oo.bootcamp.parkinglot;
 
-public class InvalidTicketException extends RuntimeException{
-}
+public class InvalidTicketException extends RuntimeException {}

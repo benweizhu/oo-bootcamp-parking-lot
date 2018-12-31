@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParkingBoyTest {
 
   @Test
-  void should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_available() throws Throwable {
+  void should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_available()
+      throws Throwable {
     ParkingLot parkingLot = new ParkingLot(1);
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     parkingLots.add(parkingLot);
@@ -38,16 +39,17 @@ public class ParkingBoyTest {
     ParkingLot parkingLot = new ParkingLot(1);
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     parkingLots.add(parkingLot);
-    ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car = new Car();
-    Ticket ticket = parkingBoy.park(car);
+    Ticket ticket = new ParkingBoy(parkingLots).park(car);
     Car pickedCar = parkingLot.pick(ticket);
 
     assertSame(car, pickedCar);
   }
 
   @Test
-  void should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_full_parking_lot_b_is_available() throws Throwable {
+  void
+      should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_full_parking_lot_b_is_available()
+          throws Throwable {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     parkingLotA.parking(new Car());
@@ -61,7 +63,8 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void should_return_same_car_when_parking_boy_pick_car_given_car_parked_in_parking_lot_b() throws Throwable {
+  void should_return_same_car_when_parking_boy_pick_car_given_car_parked_in_parking_lot_b()
+      throws Throwable {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     ParkingLot parkingLotB = new ParkingLot(1);
@@ -80,7 +83,8 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void should_return_same_car_when_customer_pick_car_given_car_parked_in_parking_lot_b() throws Throwable {
+  void should_return_same_car_when_customer_pick_car_given_car_parked_in_parking_lot_b()
+      throws Throwable {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     ParkingLot parkingLotB = new ParkingLot(1);
@@ -98,7 +102,8 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void should_throw_no_slot_exception_when_parking_boy_park_car_given_parking_lot_a_and_b_both_full(){
+  void
+      should_throw_no_slot_exception_when_parking_boy_park_car_given_parking_lot_a_and_b_both_full() {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     ParkingLot parkingLotB = new ParkingLot(1);
@@ -111,5 +116,6 @@ public class ParkingBoyTest {
 
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car = new Car();
-    assertThrows(ParkingLotIsFullException.class, ()-> parkingBoy.park(car));
-  }}
+    assertThrows(ParkingLotIsFullException.class, () -> parkingBoy.park(car));
+  }
+}
