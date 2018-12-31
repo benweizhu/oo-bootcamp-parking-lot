@@ -14,7 +14,7 @@ class SmartParkingBoy extends SuperBoy {
   Ticket park(Car car) throws Throwable {
     return this.parkingLots
         .stream()
-        .max(Comparator.comparingInt(ParkingLot::getAvailableSlots))
+        .max(Comparator.comparingInt(ParkingLot::getNumberOfAvailableSlots))
         .orElseThrow((Supplier<Throwable>) ParkingLotIsFullException::new)
         .park(car);
   }

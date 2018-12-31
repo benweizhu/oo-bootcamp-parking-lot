@@ -36,7 +36,7 @@ class ParkingLot {
     return parkedCars.containsKey(ticket);
   }
 
-  int getAvailableSlots() {
+  int getNumberOfAvailableSlots() {
     return this.numberOfSlot - parkedCars.size();
   }
 }
