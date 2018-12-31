@@ -95,7 +95,7 @@ public class SmartParkingBoyTest {
   }
 
   @Test
-  void should_throw_invalid_ticket_exception_when_smart_parking_boy_pick_car_given_ticket_not_match() throws Throwable {
+  void should_throw_invalid_ticket_exception_when_smart_parking_boy_pick_car_given_ticket_not_match() {
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     parkingLots.add(parkingLotA);
@@ -104,4 +104,15 @@ public class SmartParkingBoyTest {
 
     assertThrows(InvalidTicketException.class, () -> smartParkingBoy.pick(new Ticket()));
   }
+
+    @Test
+    void should_throw_invalid_ticket_exception_when_smart_parking_boy_pick_car_given_no_ticket() {
+        ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+        ParkingLot parkingLotA = new ParkingLot(1);
+        parkingLots.add(parkingLotA);
+
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+
+        assertThrows(InvalidTicketException.class, () -> smartParkingBoy.pick(null));
+    }
 }
