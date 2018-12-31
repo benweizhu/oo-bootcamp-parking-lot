@@ -52,7 +52,7 @@ public class ParkingBoyTest {
           throws Throwable {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
-    parkingLotA.parking(new Car());
+    parkingLotA.park(new Car());
     parkingLots.add(parkingLotA);
     ParkingLot parkingLotB = new ParkingLot(1);
     parkingLots.add(parkingLotB);
@@ -72,7 +72,7 @@ public class ParkingBoyTest {
     parkingLots.add(parkingLotA);
     parkingLots.add(parkingLotB);
 
-    parkingLotA.parking(new Car());
+    parkingLotA.park(new Car());
 
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car = new Car();
@@ -92,7 +92,7 @@ public class ParkingBoyTest {
     parkingLots.add(parkingLotA);
     parkingLots.add(parkingLotB);
 
-    parkingLotA.parking(new Car());
+    parkingLotA.park(new Car());
 
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car = new Car();
@@ -111,8 +111,8 @@ public class ParkingBoyTest {
     parkingLots.add(parkingLotA);
     parkingLots.add(parkingLotB);
 
-    parkingLotA.parking(new Car());
-    parkingLotB.parking(new Car());
+    parkingLotA.park(new Car());
+    parkingLotB.park(new Car());
 
     ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
     Car car = new Car();

@@ -16,7 +16,7 @@ class ParkingBoy {
         .stream()
         .filter(ParkingLot::hasAvailableSlot)
         .findFirst()
-        .map(parkingLot -> parkingLot.parking(car))
+        .map(parkingLot -> parkingLot.park(car))
         .orElseThrow((Supplier<Throwable>) ParkingLotIsFullException::new);
   }
 

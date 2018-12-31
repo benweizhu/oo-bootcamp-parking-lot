@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class SmartParkingBoyTest {
 
@@ -23,5 +24,19 @@ public class SmartParkingBoyTest {
     Car pickedCar = parkingLotA.pick(ticket);
     assertNotNull(ticket);
     assertSame(car, pickedCar);
+  }
+
+  @Test
+  void should_throw_parking_lot_is_full_exception_when_smart_parking_boy_park_given_parking_lot_a_is_full() throws Throwable {
+    ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLotA = new ParkingLot(1);
+    parkingLotA.park(new Car());
+
+    parkingLots.add(parkingLotA);
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+
+    Car car = new Car();
+
+    assertThrows(ParkingLotIsFullException.class, ()-> smartParkingBoy.park(car));
   }
 }

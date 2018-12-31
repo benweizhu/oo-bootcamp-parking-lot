@@ -12,7 +12,7 @@ class ParkingLot {
     this.numberOfSlot = numberOfSlot;
   }
 
-  Ticket parking(Car car) {
+  Ticket park(Car car) {
     if (!hasAvailableSlot()) {
       throw new ParkingLotIsFullException();
     }
