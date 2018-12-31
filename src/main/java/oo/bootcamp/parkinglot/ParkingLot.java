@@ -13,7 +13,7 @@ class ParkingLot {
   }
 
   Ticket parking(Car car) {
-    if (this.numberOfSlot <= parkedCars.size()) {
+    if (!hasAvailableSlot()) {
       throw new ParkingLotIsFullException();
     }
     Ticket ticket = new Ticket();
@@ -21,10 +21,18 @@ class ParkingLot {
     return ticket;
   }
 
-  public Car pick(Ticket ticket) {
-    if (!parkedCars.containsKey(ticket)) {
+  boolean hasAvailableSlot() {
+    return this.numberOfSlot > parkedCars.size();
+  }
+
+  Car pick(Ticket ticket) {
+    if (!hasMyCar(ticket)) {
       throw new InvalidTicketException();
     }
     return parkedCars.remove(ticket);
+  }
+
+  boolean hasMyCar(Ticket ticket) {
+    return parkedCars.containsKey(ticket);
   }
 }
