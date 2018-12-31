@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SmartParkingBoyTest {
 
@@ -27,7 +25,7 @@ public class SmartParkingBoyTest {
   }
 
   @Test
-  void should_throw_parking_lot_is_full_exception_when_smart_parking_boy_park_given_parking_lot_a_is_full() throws Throwable {
+  void should_throw_parking_lot_is_full_exception_when_smart_parking_boy_park_given_parking_lot_a_is_full() {
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     parkingLotA.park(new Car());
@@ -38,5 +36,25 @@ public class SmartParkingBoyTest {
     Car car = new Car();
 
     assertThrows(ParkingLotIsFullException.class, ()-> smartParkingBoy.park(car));
+  }
+
+  @Test
+  void should_park_car_in_parking_lot_b_when_smart_parking_boy_park_car_given_parking_lot_b_has_more_slots_than_a()
+          throws Throwable {
+    ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLotA = new ParkingLot(1);
+    ParkingLot parkingLotB = new ParkingLot(2);
+
+    parkingLots.add(parkingLotA);
+    parkingLots.add(parkingLotB);
+
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
+    Car car = new Car();
+
+    Ticket ticket = smartParkingBoy.park(car);
+    Car pickedCar = parkingLotB.pick(ticket);
+
+    assertNotNull(ticket);
+    assertSame(car, pickedCar);
   }
 }

@@ -35,4 +35,8 @@ class ParkingLot {
   boolean hasMyCar(Ticket ticket) {
     return parkedCars.containsKey(ticket);
   }
+
+  int getAvailableSlots() {
+    return this.numberOfSlot - parkedCars.size();
+  }
 }
