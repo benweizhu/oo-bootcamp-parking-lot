@@ -1,3 +1,8 @@
+Tasking的特点
+1.用户前瞻性
+2.增量浮现性
+3.迭代变更性
+
 ![parking-lot](https://user-images.githubusercontent.com/5471228/50380436-1c40fb00-06a2-11e9-8df8-9bd377878e39.gif)
 
 
