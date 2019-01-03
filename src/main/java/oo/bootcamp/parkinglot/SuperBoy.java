@@ -11,13 +11,13 @@ abstract class SuperBoy {
     this.parkingLots = parkingLots;
   }
 
-  Car pick(Ticket ticket) throws Throwable {
+  Car pick(Ticket ticket) {
     return this.parkingLots
         .stream()
         .filter(parkingLot -> parkingLot.hasMyCar(ticket))
         .map(parkingLot -> parkingLot.pick(ticket))
         .findFirst()
-        .orElseThrow((Supplier<Throwable>) InvalidTicketException::new);
+        .orElseThrow((Supplier<RuntimeException>) InvalidTicketException::new);
   }
 
   boolean hasAvailableSlots() {
