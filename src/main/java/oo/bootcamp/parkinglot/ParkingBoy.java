@@ -10,13 +10,13 @@ class ParkingBoy extends SuperBoy {
   }
 
   @Override
-  Ticket park(Car car) throws Throwable {
+  Ticket park(Car car) {
     return this.parkingLots
         .stream()
         .filter(ParkingLot::hasAvailableSlot)
         .findFirst()
         .map(parkingLot -> parkingLot.park(car))
-        .orElseThrow((Supplier<Throwable>) ParkingLotIsFullException::new);
+        .orElseThrow((Supplier<RuntimeException>) ParkingLotIsFullException::new);
   }
 
 }

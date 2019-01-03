@@ -11,11 +11,11 @@ class SmartParkingBoy extends SuperBoy {
   }
 
   @Override
-  Ticket park(Car car) throws Throwable {
+  Ticket park(Car car) {
     return this.parkingLots
         .stream()
         .max(Comparator.comparingInt(ParkingLot::getNumberOfAvailableSlots))
-        .orElseThrow((Supplier<Throwable>) ParkingLotIsFullException::new)
+        .orElseThrow((Supplier<RuntimeException>) ParkingLotIsFullException::new)
         .park(car);
   }
 }

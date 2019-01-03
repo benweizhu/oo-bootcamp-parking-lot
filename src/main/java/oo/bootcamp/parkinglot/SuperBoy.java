@@ -24,5 +24,5 @@ abstract class SuperBoy {
     return this.parkingLots.stream().anyMatch(ParkingLot::hasAvailableSlot);
   }
 
-  abstract Ticket park(Car car) throws Throwable;
+  abstract Ticket park(Car car);
 }
