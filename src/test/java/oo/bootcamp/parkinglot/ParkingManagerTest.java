@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ParkingManagerTest {
   @Test
@@ -59,5 +60,49 @@ public class ParkingManagerTest {
       Ticket ticket = parkingManager.park(car);
       assertNotNull(ticket);
       assertSame(car, parkingLotA.pick(ticket));
+  }
+
+  @Test
+  void should_park_car_to_parking_lot_a_when_parking_manager_park_car_given_parking_manager_has_a_parking_boy_with_parking_lot_a_fulled_and_a_smart_parking_boy_with_parking_lot_b()
+          throws Throwable {
+    ArrayList<SuperBoy> parkingBoys = new ArrayList<>();
+
+    ParkingLot parkingLotA = new ParkingLot(1);
+    parkingLotA.park(new Car());
+    ArrayList<ParkingLot> parkingLotsA = new ArrayList<>();
+    parkingLotsA.add(parkingLotA);
+    parkingBoys.add(new SmartParkingBoy(parkingLotsA));
+
+    ParkingLot parkingLotB = new ParkingLot(10);
+    ArrayList<ParkingLot> parkingLotsB = new ArrayList<>();
+    parkingLotsB.add(parkingLotB);
+    parkingBoys.add(new ParkingBoy(parkingLotsB));
+
+    ParkingManager parkingManager = new ParkingManager(parkingBoys);
+    Car car = new Car();
+    Ticket ticket = parkingManager.park(car);
+    assertNotNull(ticket);
+    assertSame(car, parkingLotB.pick(ticket));
+  }
+
+  @Test
+  void should_park_car_to_parking_lot_a_when_parking_manager_park_car_given_parking_manager_has_a_parking_boy_with_parking_lot_a_fulled_and_a_smart_parking_boy_with_parking_lot_b_fulled() {
+    ArrayList<SuperBoy> parkingBoys = new ArrayList<>();
+
+    ParkingLot parkingLotA = new ParkingLot(1);
+    parkingLotA.park(new Car());
+    ArrayList<ParkingLot> parkingLotsA = new ArrayList<>();
+    parkingLotsA.add(parkingLotA);
+    parkingBoys.add(new SmartParkingBoy(parkingLotsA));
+
+    ParkingLot parkingLotB = new ParkingLot(1);
+    parkingLotB.park(new Car());
+    ArrayList<ParkingLot> parkingLotsB = new ArrayList<>();
+    parkingLotsB.add(parkingLotB);
+    parkingBoys.add(new ParkingBoy(parkingLotsB));
+
+    ParkingManager parkingManager = new ParkingManager(parkingBoys);
+    Car car = new Car();
+    assertThrows(ParkingLotIsFullException.class, () -> parkingManager.park(car));
   }
 }
