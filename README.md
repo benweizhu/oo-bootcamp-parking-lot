@@ -115,3 +115,46 @@ Feature: SmartBoy停车
     When SmartBoy取车
     Then SmartBoy取车失败
 ```
+
+```gherkin
+Feature: Parking Manager
+  Scenario: 
+    Given 有一个Manager，管理一个ParkingBoy
+    And ParkingBoy管理一个停车场A，且停车场有空位
+    When Manager停车
+    Then 停车成功
+    
+    Given 有一个Manager，管理一个SmartParkingBoy
+    And SmartParkingBoy管理一个停车场A，且停车场有空位
+    When Manager停车
+    Then 停车成功    
+    
+    Given 有一个Manager，管理一个ParkingBoy和一个SmartParkingBoy
+    And ParkingBoy管理一个停车场A，且停车场有空位，SmartParkingBoy管理停车场B，且停车场有空位
+    And ParkingBoy先报到
+    When Manager停车
+    Then ParkingBoy把车停到停车场A          
+
+    Given 有一个Manager，管理一个ParkingBoy和一个SmartParkingBoy
+    And ParkingBoy管理一个停车场A，且停车场没有空位，SmartParkingBoy管理停车场B，且停车场有空位
+    And ParkingBoy先报到
+    When Manager停车
+    Then SmartParkingBoy停车成功   
+    
+    Given 有一个Manager，管理一个ParkingBoy和一个SmartParkingBoy
+    And ParkingBoy管理一个停车场A，且停车场没有空位，SmartParkingBoy管理停车场B，且停车场没有空位
+    And ParkingBoy先报到
+    When Manager停车
+    Then Manager停车失败    
+    
+    Given 有一个Manager，没有小弟
+    And 有一个Manager管理一个停车场A，且停车场有空位
+    When Manager停车
+    Then Manager把车停到停车场A 
+    
+    Given 有一个Manager，管理一个ParkingBoy和一个SmartParkingBoy
+    And ParkingBoy管理一个停车场A，且停车场没有空位，SmartParkingBoy管理停车场B，且停车场没有空位，Manager管理一个停车场C，且停车场有空位
+    And ParkingBoy先报到
+    When Manager停车
+    Then Manager自己停车成功  C       
+```
