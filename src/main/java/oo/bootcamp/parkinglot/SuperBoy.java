@@ -20,5 +20,9 @@ abstract class SuperBoy {
         .orElseThrow((Supplier<Throwable>) InvalidTicketException::new);
   }
 
+  boolean hasAvailableSlots() {
+    return this.parkingLots.stream().anyMatch(ParkingLot::hasAvailableSlot);
+  }
+
   abstract Ticket park(Car car) throws Throwable;
 }
