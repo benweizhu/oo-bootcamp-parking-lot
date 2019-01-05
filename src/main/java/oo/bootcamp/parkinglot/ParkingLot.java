@@ -3,7 +3,7 @@ package oo.bootcamp.parkinglot;
 import java.util.HashMap;
 import java.util.Map;
 
-class ParkingLot {
+class ParkingLot implements Parkingable{
 
   private int numberOfSlot;
   private Map<Ticket, Car> parkedCars = new HashMap<>();
@@ -12,7 +12,8 @@ class ParkingLot {
     this.numberOfSlot = numberOfSlot;
   }
 
-  Ticket park(Car car) {
+  @Override
+  public Ticket park(Car car) {
     if (!hasAvailableSlot()) {
       throw new ParkingLotIsFullException();
     }
@@ -25,7 +26,8 @@ class ParkingLot {
     return this.numberOfSlot > parkedCars.size();
   }
 
-  Car pick(Ticket ticket) {
+  @Override
+  public Car pick(Ticket ticket) {
     if (!hasMyCar(ticket)) {
       throw new InvalidTicketException();
     }
