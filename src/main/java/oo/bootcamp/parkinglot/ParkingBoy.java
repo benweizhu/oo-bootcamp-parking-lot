@@ -10,7 +10,7 @@ class ParkingBoy extends SuperBoy {
   }
 
   @Override
-  Ticket park(Car car) {
+  public Ticket park(Car car) {
     return this.parkingLots
         .stream()
         .filter(ParkingLot::hasAvailableSlot)

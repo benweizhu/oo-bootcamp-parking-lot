@@ -3,7 +3,7 @@ package oo.bootcamp.parkinglot;
 import java.util.List;
 import java.util.function.Supplier;
 
-abstract class SuperBoy {
+abstract class SuperBoy implements Parkingable {
 
   List<ParkingLot> parkingLots;
 
@@ -11,7 +11,8 @@ abstract class SuperBoy {
     this.parkingLots = parkingLots;
   }
 
-  Car pick(Ticket ticket) {
+  @Override
+  public Car pick(Ticket ticket) {
     return this.parkingLots
         .stream()
         .filter(parkingLot -> parkingLot.hasMyCar(ticket))
@@ -28,5 +29,4 @@ abstract class SuperBoy {
     return this.parkingLots.stream().anyMatch(ParkingLot::hasAvailableSlot);
   }
 
-  abstract Ticket park(Car car);
 }

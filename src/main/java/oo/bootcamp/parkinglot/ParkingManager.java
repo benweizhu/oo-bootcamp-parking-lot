@@ -23,7 +23,7 @@ public class ParkingManager extends SuperBoy {
   }
 
   @Override
-  Car pick(Ticket ticket) {
+  public Car pick(Ticket ticket) {
     return this.parkingBoys
         .stream()
         .filter(superBoy -> superBoy.containsCar(ticket))

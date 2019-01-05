@@ -11,7 +11,7 @@ class SmartParkingBoy extends SuperBoy {
   }
 
   @Override
-  Ticket park(Car car) {
+  public Ticket park(Car car) {
     return this.parkingLots
         .stream()
         .max(Comparator.comparingInt(ParkingLot::getNumberOfAvailableSlots))
