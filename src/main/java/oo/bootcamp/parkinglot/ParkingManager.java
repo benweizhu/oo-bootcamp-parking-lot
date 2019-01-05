@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class ParkingManager extends SuperBoy {
+public class ParkingManager implements Parkingable {
 
   private List<SuperBoy> parkingBoys = new ArrayList<>();
+  private List<ParkingLot> parkingLots;
 
   public ParkingManager(List<ParkingLot> parkingLots) {
-    super(parkingLots);
+    this.parkingLots = parkingLots;
   }
 
   @Override
@@ -29,7 +30,7 @@ public class ParkingManager extends SuperBoy {
         .filter(superBoy -> superBoy.containsCar(ticket))
         .findAny()
         .map(superBoy -> superBoy.pick(ticket))
-        .orElseGet(() -> super.pick(ticket));
+        .orElseGet(() -> this.pick(ticket));
   }
 
   private Ticket managerPark(Car car) {

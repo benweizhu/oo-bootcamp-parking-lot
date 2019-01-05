@@ -111,7 +111,7 @@ public class ParkingManagerTest {
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLot = new ParkingLot(5);
     parkingLots.add(parkingLot);
-    SuperBoy parkingManager = new ParkingManager(parkingLots);
+    Parkingable parkingManager = new ParkingManager(parkingLots);
 
     Car car = new Car();
     Ticket ticket = parkingManager.park(car);
