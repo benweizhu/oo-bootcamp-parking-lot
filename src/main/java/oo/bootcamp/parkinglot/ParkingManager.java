@@ -22,6 +22,16 @@ public class ParkingManager extends SuperBoy {
         .orElseGet(() -> managerPark(car));
   }
 
+  @Override
+  Car pick(Ticket ticket) {
+    return this.parkingBoys
+        .stream()
+        .filter(superBoy -> superBoy.containsCar(ticket))
+        .findAny()
+        .map(superBoy -> superBoy.pick(ticket))
+        .orElseGet(() -> super.pick(ticket));
+  }
+
   private Ticket managerPark(Car car) {
     return parkingLots
         .stream()

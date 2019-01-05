@@ -20,6 +20,10 @@ abstract class SuperBoy {
         .orElseThrow((Supplier<RuntimeException>) InvalidTicketException::new);
   }
 
+  boolean containsCar(Ticket ticket) {
+    return this.parkingLots.stream().anyMatch(parkingLot -> parkingLot.hasMyCar(ticket));
+  }
+
   boolean hasAvailableSlots() {
     return this.parkingLots.stream().anyMatch(ParkingLot::hasAvailableSlot);
   }

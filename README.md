@@ -157,4 +157,10 @@ Feature: Parking Manager
     And ParkingBoy先报到
     When Manager停车
     Then Manager自己停车成功  C       
+    
+    Given 有一个Manager，管理一个ParkingBoy
+    And ParkingBoy管理一个停车场A，Manager管理一个停车场C，车停在停车场A
+    And ParkingBoy先报到
+    When Manager取车
+    Then Manager取车成功       
 ```
