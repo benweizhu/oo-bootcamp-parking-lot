@@ -1,4 +1,9 @@
-package oo.bootcamp.parkinglot;
+package oo.bootcamp.parkinglot.domain;
+
+import oo.bootcamp.parkinglot.model.Car;
+import oo.bootcamp.parkinglot.exception.InvalidTicketException;
+import oo.bootcamp.parkinglot.exception.ParkingLotIsFullException;
+import oo.bootcamp.parkinglot.model.Ticket;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +35,10 @@ public class ParkingManager implements Parkingable {
         .filter(superBoy -> superBoy.containsCar(ticket))
         .findAny()
         .map(superBoy -> superBoy.pick(ticket))
-        .orElseGet(() -> managerPickCar(ticket));
+        .orElseGet(() -> managerPick(ticket));
   }
 
-  private Car managerPickCar(Ticket ticket) {
+  private Car managerPick(Ticket ticket) {
     return this.parkingLots
         .stream()
         .filter(parkingLot -> parkingLot.hasMyCar(ticket))

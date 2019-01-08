@@ -1,14 +1,19 @@
-package oo.bootcamp.parkinglot;
+package oo.bootcamp.parkinglot.domain;
+
+import oo.bootcamp.parkinglot.model.Car;
+import oo.bootcamp.parkinglot.exception.InvalidTicketException;
+import oo.bootcamp.parkinglot.exception.ParkingLotIsFullException;
+import oo.bootcamp.parkinglot.model.Ticket;
 
 import java.util.HashMap;
 import java.util.Map;
 
-class ParkingLot implements Parkingable{
+public class ParkingLot implements Parkingable {
 
   private int numberOfSlot;
   private Map<Ticket, Car> parkedCars = new HashMap<>();
 
-  ParkingLot(int numberOfSlot) {
+  public ParkingLot(int numberOfSlot) {
     this.numberOfSlot = numberOfSlot;
   }
 

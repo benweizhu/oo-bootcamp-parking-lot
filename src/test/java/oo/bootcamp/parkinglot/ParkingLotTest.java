@@ -1,5 +1,10 @@
 package oo.bootcamp.parkinglot;
 
+import oo.bootcamp.parkinglot.domain.ParkingLot;
+import oo.bootcamp.parkinglot.exception.InvalidTicketException;
+import oo.bootcamp.parkinglot.exception.ParkingLotIsFullException;
+import oo.bootcamp.parkinglot.model.Car;
+import oo.bootcamp.parkinglot.model.Ticket;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

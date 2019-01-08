@@ -1,5 +1,10 @@
 package oo.bootcamp.parkinglot;
 
+import oo.bootcamp.parkinglot.domain.ParkingBoy;
+import oo.bootcamp.parkinglot.domain.ParkingLot;
+import oo.bootcamp.parkinglot.exception.ParkingLotIsFullException;
+import oo.bootcamp.parkinglot.model.Car;
+import oo.bootcamp.parkinglot.model.Ticket;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,8 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ParkingBoyTest {
 
   @Test
-  void should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_available()
-      throws Throwable {
+  void should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_available() {
     ParkingLot parkingLot = new ParkingLot(1);
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     parkingLots.add(parkingLot);
@@ -22,7 +26,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void should_return_same_car_when_parking_boy_pick_car_given_correct_ticket() throws Throwable {
+  void should_return_same_car_when_parking_boy_pick_car_given_correct_ticket() {
     ParkingLot parkingLot = new ParkingLot(1);
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     parkingLots.add(parkingLot);
@@ -35,7 +39,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void should_return_same_car_when_customer_pick_car_given_correct_ticket() throws Throwable {
+  void should_return_same_car_when_customer_pick_car_given_correct_ticket() {
     ParkingLot parkingLot = new ParkingLot(1);
     ArrayList<ParkingLot> parkingLots = new ArrayList<>();
     parkingLots.add(parkingLot);
@@ -47,9 +51,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void
-      should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_full_parking_lot_b_is_available()
-          throws Throwable {
+  void should_return_ticket_when_parking_boy_park_car_given_parking_lot_A_is_full_parking_lot_b_is_available() {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     parkingLotA.park(new Car());
@@ -63,8 +65,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void should_return_same_car_when_parking_boy_pick_car_given_car_parked_in_parking_lot_b()
-      throws Throwable {
+  void should_return_same_car_when_parking_boy_pick_car_given_car_parked_in_parking_lot_b() {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     ParkingLot parkingLotB = new ParkingLot(1);
@@ -83,8 +84,7 @@ public class ParkingBoyTest {
   }
 
   @Test
-  void should_return_same_car_when_customer_pick_car_given_car_parked_in_parking_lot_b()
-      throws Throwable {
+  void should_return_same_car_when_customer_pick_car_given_car_parked_in_parking_lot_b() {
     List<ParkingLot> parkingLots = new ArrayList<>();
     ParkingLot parkingLotA = new ParkingLot(1);
     ParkingLot parkingLotB = new ParkingLot(1);

@@ -1,4 +1,8 @@
-package oo.bootcamp.parkinglot;
+package oo.bootcamp.parkinglot.domain;
+
+import oo.bootcamp.parkinglot.model.Car;
+import oo.bootcamp.parkinglot.exception.InvalidTicketException;
+import oo.bootcamp.parkinglot.model.Ticket;
 
 import java.util.List;
 import java.util.function.Supplier;

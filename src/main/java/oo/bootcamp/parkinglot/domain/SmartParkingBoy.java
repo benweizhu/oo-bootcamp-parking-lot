@@ -1,12 +1,16 @@
-package oo.bootcamp.parkinglot;
+package oo.bootcamp.parkinglot.domain;
+
+import oo.bootcamp.parkinglot.model.Car;
+import oo.bootcamp.parkinglot.exception.ParkingLotIsFullException;
+import oo.bootcamp.parkinglot.model.Ticket;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Supplier;
 
-class SmartParkingBoy extends SuperBoy {
+public class SmartParkingBoy extends SuperBoy {
 
-  SmartParkingBoy(List<ParkingLot> parkingLots) {
+  public SmartParkingBoy(List<ParkingLot> parkingLots) {
     super(parkingLots);
   }
 
