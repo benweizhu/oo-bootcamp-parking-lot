@@ -165,4 +165,21 @@ public class ParkingManagerTest {
     Ticket ticket = parkingManager.park(car);
     assertSame(car, parkingManager.pick(ticket));
   }
+
+  @Test
+  void should_throw_invalid_ticket_when_manager_pick_car_given_manager_no_car_is_parked_by_manager(){
+    ParkingLot parkingLotA = new ParkingLot(1);
+    ArrayList<ParkingLot> parkingLotsA = new ArrayList<>();
+    parkingLotsA.add(parkingLotA);
+    SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLotsA);
+
+    ArrayList<ParkingLot> parkingLots = new ArrayList<>();
+    ParkingLot parkingLotC = new ParkingLot(2);
+    parkingLots.add(parkingLotC);
+
+    ParkingManager parkingManager = new ParkingManager(parkingLots);
+    parkingManager.addParkingBoy(smartParkingBoy);
+
+    assertThrows(InvalidTicketException.class, () -> parkingManager.pick(new Ticket()));
+  }
 }

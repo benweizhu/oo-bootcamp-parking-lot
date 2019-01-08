@@ -30,7 +30,16 @@ public class ParkingManager implements Parkingable {
         .filter(superBoy -> superBoy.containsCar(ticket))
         .findAny()
         .map(superBoy -> superBoy.pick(ticket))
-        .orElseGet(() -> this.pick(ticket));
+        .orElseGet(() -> managerPickCar(ticket));
+  }
+
+  private Car managerPickCar(Ticket ticket) {
+    return this.parkingLots
+        .stream()
+        .filter(parkingLot -> parkingLot.hasMyCar(ticket))
+        .findAny()
+        .map(parkingLot -> parkingLot.pick(ticket))
+        .orElseThrow((Supplier<RuntimeException>) InvalidTicketException::new);
   }
 
   private Ticket managerPark(Car car) {
